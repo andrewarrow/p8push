@@ -15,3 +15,5 @@ notification = P8push::Notification.new(device: token)
 notification.alert = 'Hello, World!'
 APN.push(notification)
 ```
+
+The gem with pem format this came from is https://github.com/nomad/houston
