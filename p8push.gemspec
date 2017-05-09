@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.email       = 'oneone@gmail.com'
   s.license     = 'MIT'
   s.homepage    = 'https://higher.team'
-  s.version     = P8Push::VERSION
+  s.version     = P8push::VERSION
   s.platform    = Gem::Platform::RUBY
   s.summary     = 'Send Apple Push Notifications'
   s.description = 'apple push notifications using only the new p8 format not the older pem format'
