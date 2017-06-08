@@ -27,11 +27,10 @@ module P8push
       @private_key = File.read(ENV['APN_PRIVATE_KEY'])
       @team_id = ENV['APN_TEAM_ID']
       @key_id = ENV['APN_KEY_ID']
-      @topic = ENV['APN_BUNDLE_ID']
       @timeout = Float(ENV['APN_TIMEOUT'] || 2.0)
     end
 
-    def jwt_http2_post(payload, token)
+    def jwt_http2_post(topic, payload, token)
       ec_key = OpenSSL::PKey::EC.new(@private_key)
       jwt_token = JWT.encode({iss: @team_id, iat: Time.now.to_i}, ec_key, 'ES256', {kid: @key_id})
 
@@ -40,7 +39,7 @@ module P8push
       h['content-type'] = 'application/json'
       h['apns-expiration'] = '0'
       h['apns-priority'] = '10'
-      h['apns-topic'] = @topic
+      h['apns-topic'] = topic
       h['authorization'] = "bearer #{jwt_token}"
       res = client.call(:post, '/3/device/'+token, body: payload.to_json, timeout: @timeout,
                         headers: h)
@@ -61,7 +60,7 @@ module P8push
 
         notification.id = index
 
-        err = jwt_http2_post(notification.payload, notification.token)
+        err = jwt_http2_post(notification.topic, notification.payload, notification.token)
         if err == nil
           notification.mark_as_sent!
         else

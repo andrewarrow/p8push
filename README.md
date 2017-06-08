@@ -15,6 +15,7 @@ APN = P8push::Client.development
 token = 'GETREALTOKENFROMADEVICE'
 notification = P8push::Notification.new(device: token)
 notification.alert = 'Hello, World!'
+notification.topic = 'com.some.other.id' # if you do not want default ENV['APN_BUNDLE_ID'] one
 APN.push(notification)
 ```
 

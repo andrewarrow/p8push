@@ -28,7 +28,7 @@ module P8push
 
     MAXIMUM_PAYLOAD_SIZE = 2048
 
-    attr_accessor :token, :alert, :badge, :sound, :category, :content_available, :mutable_content,
+    attr_accessor :topic, :token, :alert, :badge, :sound, :category, :content_available, :mutable_content,
                   :custom_data, :id, :expiry, :priority
     attr_reader :sent_at
     attr_writer :apns_error_code
@@ -39,6 +39,7 @@ module P8push
     def initialize(options = {})
       @token = options.delete(:token) || options.delete(:device)
       @alert = options.delete(:alert)
+      @topic = options.delete(:topic) || ENV['APN_BUNDLE_ID']
       @badge = options.delete(:badge)
       @sound = options.delete(:sound)
       @category = options.delete(:category)
