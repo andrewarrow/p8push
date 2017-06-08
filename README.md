@@ -1,7 +1,7 @@
 # p8push
 ruby gem for apple push notifications using only the new p8 format not the older pem format
 
-add to Gemfile: `gem 'p8push', git: 'https://github.com/andrewarrow/p8push.git'`
+add to Gemfile: `gem 'p8push'`
 
 ```
 export APN_PRIVATE_KEY=/path/APNsAuthKey_ABCDE12345.p8 
