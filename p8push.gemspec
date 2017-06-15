@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   s.summary     = 'Send Apple Push Notifications'
   s.description = 'apple push notifications using only the new p8 format not the older pem format'
 
-  s.add_dependency 'jwt', '~> 1.5.6'
-  s.add_dependency 'commander', '~> 4.4'
+  s.add_dependency 'jwt', '1.5.6'
+  s.add_dependency 'commander', '4.4'
   s.add_dependency 'json', '2.1.0'
   s.add_dependency 'net-http2', '0.15.0'
 
